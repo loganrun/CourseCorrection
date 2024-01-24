@@ -155,30 +155,6 @@ const getLearnerData = async (course, ag, submissions)=> {
         throw new Error("These are not the right assignments for this course")
     }
 
-    
-
-
-    
-    // for(assign in assignment){
-    //     //console.log(assignment.course_id)
-    // }
-
-
-
-    // for(learner of submissions){
-
-    //     //console.log(learner.learner_id)
-
-    // }
-
-
-
-
-
-
-    //console.log(info)
-    //console.log(assignment)
-    //console.log(entry)
 
     // here, we would process this data to achieve the desired result.
     const result = [

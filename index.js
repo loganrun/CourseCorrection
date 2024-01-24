@@ -1,4 +1,4 @@
-const validAssign=[]
+const validGrades=[]
 const CourseInfo = {
     id: 451,
     name: "Introduction to JavaScript"
@@ -111,7 +111,7 @@ const AssignmentChecker = (assignment, workSubmitted) =>{
             validAssign.push(date)
           
           }else{
-            //console.log(`The assignment "${date.name}" is not due`)
+            console.log(`The assignment "${date.name}" is not due`)
           }
         } 
         //console.log(validAssign)
@@ -121,23 +121,26 @@ const AssignmentChecker = (assignment, workSubmitted) =>{
     } finally{
 
       for(assign of submissions){
+        //console.log(submissions)
         
         if(currentCourse.has(assign.assignment_id)){
+          //console.log(assign)
 
-          validAssign.push(assign)
-
+          validGrades.push(assign)
+          
         }else{
 
-          //console.log("these assignments aren't valid")
+          console.log("these assignments aren't valid")
         }
 
         
         //console.log(currentCourse)
 
       }
-      //console.log(validAssign)
-        
+      
+
     }
+    console.log(validGrades)
 }
 
 const getLearnerData = async (course, ag, submissions)=> {

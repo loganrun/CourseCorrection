@@ -111,10 +111,10 @@ const AssignmentChecker = (assignment, workSubmitted) =>{
             validAssign.push(date)
           
           }else{
-            console.log(`The assignment "${date.name}" is not due`)
+            //console.log(`The assignment "${date.name}" is not due`)
           }
         } 
-        console.log(validAssign)
+        //console.log(validAssign)
       }catch (error) {
         console.error(error)
         
@@ -124,17 +124,18 @@ const AssignmentChecker = (assignment, workSubmitted) =>{
         
         if(currentCourse.has(assign.assignment_id)){
 
-          validAssign.push(assign.assignment_id)
+          validAssign.push(assign)
 
         }else{
 
-          console.log("these assignments aren't valid")
+          //console.log("these assignments aren't valid")
         }
 
-        console.log(validAssign)
+        
         //console.log(currentCourse)
 
       }
+      //console.log(validAssign)
         
     }
 }

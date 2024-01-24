@@ -1,4 +1,3 @@
-const validGrades=[]
 const CourseInfo = {
     id: 451,
     name: "Introduction to JavaScript"
@@ -76,85 +75,71 @@ const CourseInfo = {
     }
   ];
 
-const courseValidate=(assignment, courseInfo) =>{
-    let courseId= courseInfo.id
-    let assignCheck = assignment.course_id
-
-    if(courseId === assignCheck){
-        return true
-    }else{
-        return false
-    }
-}
-
-const AssignmentChecker = (assignment, workSubmitted) =>{
-    const dateCheck = assignment.assignments
-    const submissions = workSubmitted
-    let validAssign = []
-    let currentCourse = new Set()
-
-    try {
-        
-        
-        interDate=''
-        for(date of dateCheck){
-          interDate = date.due_at
-
-         //console.log(interDate)
-          let inputDate = date.due_at
-          let currentDate = new Date()
-          let currentDateString = currentDate.toISOString().slice(0,10)
-          //console.log(inputDate)
-          //console.log(currentDateString)
-          if(inputDate <= currentDateString){
-            currentCourse.add(date.id)
-            validAssign.push(date)
-          
-          }else{
-            console.log(`The assignment "${date.name}" is not due`)
-          }
-        } 
-        //console.log(validAssign)
-      }catch (error) {
-        console.error(error)
-        
-    } finally{
-
-      for(assign of submissions){
-        //console.log(submissions)
-        
-        if(currentCourse.has(assign.assignment_id)){
-          //console.log(assign)
-
-          validGrades.push(assign)
-          
-        }else{
-
-          console.log("these assignments aren't valid")
-        }
-
-        
-        //console.log(currentCourse)
-
-      }
-      
-
-    }
-    console.log(validGrades)
-}
 
 const getLearnerData = async (course, ag, submissions)=> {
-    let info = course;
-    let assignment = ag;
-    let workSubmitted = submissions
+  let info = course;
+  let assignment = ag;
+  let workSubmitted = submissions
+  const  validAssign = []
+  const validSubmissions=[]
+
     //const courseValidator = await courseValidate(assignment,info)
+    const courseValidate=(assignment, courseInfo) =>{
+      let courseId= courseInfo.id
+      let assignCheck = assignment.course_id
+  
+      if(courseId === assignCheck){
+          return true
+      }else{
+          return false
+      }
+    }
+
+    const AssignmentChecker = (assignment, workSubmitted) =>{
+      const dateCheck = assignment.assignments
+      const submissions = workSubmitted
+      let currentCourse = new Set()
+  
+      try {
+          for(date of dateCheck){
+            let inputDate = date.due_at
+            let currentDate = new Date()
+            let currentDateString = currentDate.toISOString().slice(0,10)
+            //console.log(inputDate)
+            //console.log(currentDateString)
+            if(inputDate <= currentDateString){
+              currentCourse.add(date.id)
+              validAssign.push(date)
+            
+            }else{
+              console.log(`The assignment "${date.name}" is not due.`)
+            }
+          } 
+          //console.log(validAssign)
+        }catch (error) {
+          console.error(error)
+      } finally{
+        for(assign of submissions){
+          //console.log(submissions)
+          if(currentCourse.has(assign.assignment_id)){
+            validSubmissions.push(assign)
+          }else{
+            console.log(`Assignment ${assign.assignment_id} cannot be graded.`)
+          }
+        }
+
+      //   finalGrade(validAssign,validSubmissions)
+      }
+
+      return validSubmissions
+    }
+
 
     if(courseValidate(assignment,info) == true){
         AssignmentChecker(assignment, workSubmitted)
     } else {
         throw new Error("These are not the right assignments for this course")
     }
-
 
     // here, we would process this data to achieve the desired result.
     const result = [

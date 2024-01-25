@@ -217,16 +217,18 @@ const getLearnerData = async (course, ag, submissions)=> {
           //console.log(submittedDate)
           let dueDate = '2023-01-25'
           if(dueDate >= submittedDate){
-            potentialScore = 50
-            actualScore = student.submission.score
-            finalGrade1 = actualScore / potentialScore
-            console.log(finalGrade1)
+            potentialScore1 = 50
+            actualScore1 = student.submission.score
+            finalGrade1 = actualScore1 / potentialScore1
+            //console.log(finalGrade1)
           }else{
-            potentialScore = 50 - (50 * .10)
-            actualScore = student.submission.score
-            finalGrade1 = actualScore / potentialScore
-            console.log(finalGrade1)
+            potentialScore2 = 50 
+            actualScore1 = student.submission.score - (student.submission.score * .10)
+            finalGrade1 = actualScore2 / potentialScore2
+           // console.log(finalGrade1)
           }
+          // avg = (actualScore1 + actualScore2) / (potentialScore1 + potentialScore2)
+          // console.log(avg)
           
         }
         if(student.learner_id == 125 && student.assignment_id == 2){
@@ -235,14 +237,14 @@ const getLearnerData = async (course, ag, submissions)=> {
           let dueDate = "2023-02-27"
           if(dueDate >= submittedDate){
             potentialScore = 150
-            actualScore = student.submission.score
-            finalGrade2 = actualScore / potentialScore
-            console.log(finalGrade2)
+            actualScore1 = student.submission.score
+            finalGrade1 = actualScore / potentialScore
+            //console.log(finalGrade2)
           }else{
-            potentialScore = 150 - (150 * .10)
-            actualScore = student.submission.score
-            finalGrade2 = actualScore / potentialScore
-            console.log(finalGrade2)
+            potentialScore = 150 
+            actualScore1 = student.submission.score - (student.submission.score * .10)
+            finalGrade1 = actualScore / potentialScore
+            //console.log(finalGrade2)
           }
           
         }
@@ -254,12 +256,12 @@ const getLearnerData = async (course, ag, submissions)=> {
             potentialScore = 50
             actualScore = student.submission.score
             finalGrade1 = actualScore / potentialScore
-            console.log(finalGrade1)
+            //console.log(finalGrade1)
           }else{
             potentialScore = 50 - (50 * .10)
             actualScore = student.submission.score
             finalGrade1 = actualScore / potentialScore
-            console.log(finalGrade1)
+            //console.log(finalGrade1)
           }
         }
         if(student.learner_id == 132 && student.assignment_id == 2){

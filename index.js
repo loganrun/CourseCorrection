@@ -1,5 +1,4 @@
-const  validAssign = []
-const validSubmissions=[]
+
 const CourseInfo = {
     id: 451,
     name: "Introduction to JavaScript"
@@ -77,80 +76,13 @@ const CourseInfo = {
     }
   ];
 
-  // const courseValidate=(assignment, courseInfo) =>{
-  //   let courseId= courseInfo.id
-  //   let assignCheck = assignment.course_id
-
-  //   if(courseId === assignCheck){
-  //       return true
-  //   }else{
-  //       return false
-  //   }
-  // }
-
-  // const AssignmentChecker = (assignment, workSubmitted) =>{
-  //   const dateCheck = assignment.assignments
-  //   const submissions = workSubmitted
-  //   let currentCourse = new Set()
-
-  //   try {
-  //       for(date of dateCheck){
-  //         let inputDate = date.due_at
-  //         let currentDate = new Date()
-  //         let currentDateString = currentDate.toISOString().slice(0,10)
-  //         //console.log(inputDate)
-  //         //console.log(currentDateString)
-  //         if(inputDate <= currentDateString){
-  //           currentCourse.add(date.id)
-  //           validAssign.push(date)
-          
-  //         }else{
-  //           console.log(`The assignment "${date.name}" is not due.`)
-  //         }
-  //       } 
-  //       //console.log(validAssign)
-  //     }catch (error) {
-  //       console.error(error)
-  //   } finally{
-  //     for(assign of submissions){
-  //       //console.log(submissions)
-  //       if(currentCourse.has(assign.assignment_id)){
-  //         validSubmissions.push(assign)
-  //       }else{
-  //         console.log(`Assignment ${assign.assignment_id} cannot be graded.`)
-  //       }
-  //     }
-  //     for(assgn of validAssign){
-  //       console.log(assgn.id)
-  //     }
-
-  //      console.log(validAssign)
-  //     // console.log(validSubmissions)
-
-  //   //   finalGrade(validAssign,validSubmissions)
-  //   }
-  //   // console.log(validAssign)
-  //   // console.log(validSubmissions)
-
-  //   return 
-  // }
-
-  // const finalGrade= async(validAssign, validSubmissions)=>{
-
-  //   const learner = await validSubmissions
-
-  //   console.log(learner)
-  //   console.log(validSubmissions)
-
-  // }
-
-  
-
 
 const getLearnerData = async (course, ag, submissions)=> {
   let info = course;
   let assignment = ag;
   let workSubmitted = submissions
+  const  validAssign = []
+const validSubmissions=[]
 
   // const finalGrade= async(validAssign, validSubmissions)=>{
 
@@ -206,11 +138,11 @@ const getLearnerData = async (course, ag, submissions)=> {
      
       for(sub of validSubmissions){
         let student = sub
-        let assignment= null
-        for(assgn of validAssign){
-          assignment = assgn
-          //console.log(assignment.id)
-      }
+        
+      //   for(assgn of validAssign){
+      //     assignment = assgn
+      //     //console.log(assignment.id)
+      // }
         //console.log(student.learner_id)
         if(student.learner_id == 125 && student.assignment_id == 1 ){
           let submittedDate = student.submission.submitted_at
@@ -237,13 +169,13 @@ const getLearnerData = async (course, ag, submissions)=> {
           let dueDate = "2023-02-27"
           if(dueDate >= submittedDate){
             potentialScore = 150
-            actualScore1 = student.submission.score
-            finalGrade1 = actualScore / potentialScore
+            actualScore = student.submission.score
+            finalGrade2 = actualScore / potentialScore
             //console.log(finalGrade2)
           }else{
             potentialScore = 150 
             actualScore1 = student.submission.score - (student.submission.score * .10)
-            finalGrade1 = actualScore / potentialScore
+            finalGrade2 = actualScore / potentialScore
             //console.log(finalGrade2)
           }
           
@@ -281,18 +213,7 @@ const getLearnerData = async (course, ag, submissions)=> {
           }
         }
       }
-      
-
-
-
-      //  console.log(validAssign)
-      // console.log(validSubmissions)
-
-    //   finalGrade(validAssign,validSubmissions)
     }
-    // console.log(validAssign)
-    // console.log(validSubmissions)
-
     return 
   }
 
@@ -307,20 +228,9 @@ const getLearnerData = async (course, ag, submissions)=> {
       
       console.error(error)
     }
-    finally{
-
-      // finalGrade()
-
-    }
-     
-    
-
-    
-
-    // console.log(validAssign)
-      // console.log(validSubmissions)
+  
     // here, we would process this data to achieve the desired result.
-     const result = 
+    const result = 
     [
       {
         id: 125,

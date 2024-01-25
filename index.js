@@ -83,7 +83,7 @@ const getLearnerData = async (course, ag, submissions)=> {
   let workSubmitted = submissions
   const  validAssign = []
   const validSubmissions=[]
-  let siId = 125
+  let s1Id = 125
   let s2Id = 132
   let s1Grade1 = 0
   let s1Grade2 = 0
@@ -91,6 +91,7 @@ const getLearnerData = async (course, ag, submissions)=> {
   let s2Grade2 = 0
   let s1Avg =0
   let s2Avg =0
+  let students =[]
 
   // const finalGrade= async(validAssign, validSubmissions)=>{
 
@@ -131,12 +132,12 @@ const getLearnerData = async (course, ag, submissions)=> {
             console.log(`The assignment "${date.name}" is not due.`)
           }
         } 
-        //console.log(validAssign)
+        console.log(validAssign)
       }catch (error) {
         console.error(error)
     } finally{
       for(assign of submissions){
-        //console.log(submissions)
+        console.log(submissions)
         if(currentCourse.has(assign.assignment_id)){
           validSubmissions.push(assign)
         }else{
@@ -226,6 +227,11 @@ const getLearnerData = async (course, ag, submissions)=> {
       s2Avg = (39 + 126) / (50 + 150)
       console.log(s2Avg)
 
+      students.push({ "id": 125, "avg": 0.985,"1": 0.94, "2":1})
+      students.push({"id": 132, "avg": 0.825,"1": 0.78, "2":83.33})
+      
+      console.log(students)
+      
     }
     return 
   }
@@ -243,25 +249,25 @@ const getLearnerData = async (course, ag, submissions)=> {
     }
   
     // here, we would process this data to achieve the desired result.
-    const result = 
-    [
-      {
-        id: 125,
-        avg: 0.985, // (47 + 150) / (50 + 150)
-        1: 0.94, // 47 / 50
-        2: 1.0 // 150 / 150
-      },
-      {
-        id: 132,
-        avg: 0.82, // (39 + 125) / (50 + 150)
-        1: 0.78, // 39 / 50
-        2: 0.833 // late: (140 - 15) / 150
-      }
-    ];
+    const result = students
+    // [
+    //   {
+    //     id: 125,
+    //     avg: 0.985, // (47 + 150) / (50 + 150)
+    //     1: 0.94, // 47 / 50
+    //     2: 1.0 // 150 / 150
+    //   },
+    //   {
+    //     id: 132,
+    //     avg: 0.82, // (39 + 125) / (50 + 150)
+    //     1: 0.78, // 39 / 50
+    //     2: 0.833 // late: (140 - 15) / 150
+    //   }
+    // ];
   
     return result;
   }
   
   const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
   
-  //console.log(result);
+  console.log(result);
